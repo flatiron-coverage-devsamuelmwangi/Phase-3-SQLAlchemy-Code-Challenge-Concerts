@@ -14,10 +14,12 @@ start coding_. Remember to identify a single source of truth for your data.
 
 ## Topics
 
-- SQLalchemy Migrations
-- SQLalchemy Relationships
+- SQLAlchemy Migrations
+- SQLAlchemy Relationships
 - Class and Instance Methods
-- SQLalchemy Querying
+- SQLAlchemy Querying
+
+***
 
 ## Instructions
 
@@ -78,11 +80,8 @@ attributes specified in the deliverables below.
 Write the following methods in the classes in the files provided. Feel free to
 build out any helper methods if needed.
 
-Deliverables use the notation `#` for instance methods, and `.` for class
-methods.
-
-Remember: SQLalchemy give your classes access to a lot of methods already!
-Keep in mind what methods SQLalchemy gives you access to on each of your
+Remember: SQLAlchemy give your classes access to a lot of methods already!
+Keep in mind what methods SQLAlchemy gives you access to on each of your
 classes when you're approaching the deliverables below.
 
 ### Migrations
@@ -104,44 +103,43 @@ deliverables.
 
 ### Object Relationship Methods
 
-Use SQLalchemy query methods where
-appropriate (i.e. `has_many`, `has_many through`, and `belongs_to`).
+Use SQLAlchemy query methods where
+appropriate.
 
 #### Concert
 
-- `Concert#band`
+- `Concert band()`
   - should return the `Band` instance for this Concert
-- `Concert#venue`
+- `Concert venue()`
   - should return the `Venue` instance for this Concert
 
 #### Venue
 
-- `Venue#concerts`
+- `Venue concerts()`
   - returns a collection of all the concerts for the `Venue`
-- `Venue#bands`
+- `Venue bands()`
   - returns a collection of all the bands who performed at the `Venue`
 
 #### Band
 
-- `Band#concerts`
+- `Band concerts()`
   - should return a collection of all the concerts that the `Band` has played
-- `Band#venues`
+- `Band venues()`
   - should return a collection of all the venues that the `Band` has performed
     at
 
 Use `python debug.py` and check that these methods work before proceeding. For
-example, you should be able to call `Band.first.venues` and see a list of the
-venues for the first band in the database based on your seed data; and
-`Concert.first.band` should return the band for the first concert in the
+example, you should be able to call `session.query(Band).first().venues`  and see a list of the
+venues for the first band in the database based on your seed data; and `session.query(Band).first()` should return the band for the first concert in the
 database.
 
 ### Aggregate and Relationship Methods
 
 #### Concert
 
-- `Concert#hometown_show?`
+- `Concert hometown_show()`
   - returns true if the concert is in the band's hometown, false if it is not
-- `Concert#introduction`
+- `Concert introduction()`
   - returns a string with the band's introduction for this concert
   - an introduction is in the form:
 
@@ -152,10 +150,10 @@ database.
 
 #### Band
 
-- `Band#play_in_venue(venue, date)`
+- `Band play_in_venue(venue, date)`
   - takes a venue (`Venue` instance) and date (as a string) as arguments
   - creates a new concert for the band in that venue on that date
-- `Band#all_introductions`
+- `Band all_introductions()`
   - returns an array of strings representing all the introductions for this band
   - each introduction is in the form:
 
@@ -164,17 +162,17 @@ database.
 {insert band hometown}"
 ```
 
-- `Band.most_performances`
+- `Band most_performances() class method`
   - returns the `Band` instance for the band that has played the most concerts
-  - **Note**: solving this using only SQLalchemy methods is possible, but
+  - **Note**: solving this using only SQLAlchemy methods is possible, but
     difficult. Feel free to use regular Python enumerable methods here.
 
 #### Venue
 
-- `Venue#concert_on(date)`
+- `Venue concert_on(date)`
   - takes a date (string) as argument
   - finds and returns the first concert on that date at that venue
-- `Venue#most_frequent_band`
+- `Venue most_frequent_band()`
   - returns the band with the most concerts at the venue
-  - **Note**: solving this using only SQLalchemy methods is possible, but
+  - **Note**: solving this using only SQLAlchemy methods is possible, but
     difficult. Feel free to use regular Python enumerable methods here.
