@@ -29,7 +29,7 @@ target_metadata = metadata
 
 # Configure the connection to your database
 config = context.config
-url = config.get_main_option("sqlite:///db/concerts.sqlite")
+url = config.get_main_option("sqlite:///lib/db/concerts.sqlite")
 connectable = engine_from_config(config.get_section(config.config_ini_section), prefix="sqlalchemy.", poolclass=pool.NullPool)
 
 # Pass the MetaData object to the context
@@ -49,7 +49,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlite:///db/concerts.sqlite")
+    url = config.get_main_option("sqlite:///lib/db/concerts.sqlite")
     context.configure(
         url=url,
         target_metadata=target_metadata,

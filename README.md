@@ -176,3 +176,11 @@ database.
   - returns the band with the most concerts at the venue
   - **Note**: solving this using only SQLAlchemy methods is possible, but
     difficult. Feel free to use regular Python enumerable methods here.
+
+# Solved
+## Run Instructions
+- To get started, run `pipenv install && pipenv shell` while inside of root directory.
+- Run `alembic upgrade head`
+- Run `python seed.py`
+- Run `python debug.py`
+- Run `session.query(Band).first()` (Should return `Band: Imagine Dragons`)

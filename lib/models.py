@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 sys.path.append(os.getcwd)
 
 
-engine = create_engine('sqlite:///db/concerts.sqlite', echo=True)
+engine = create_engine('sqlite:///lib/db/concerts.sqlite', echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
